@@ -6,8 +6,10 @@ module.exports = ->
   lines = 1
 
   transform = (chunk, encoding, cb) ->
-    tokens = chunk.split(' ')
-    words = tokens.length
+    chunk = chunk.match(/\w+|"(?:\\"|[^"])+"/g);
+    #tokens = chunk.split("  (?=(([^\"]*[\"]))*[^\"]*$)")
+    #console.log(chunk)
+    words = chunk.length
     return cb()
 
   flush = (cb) ->
